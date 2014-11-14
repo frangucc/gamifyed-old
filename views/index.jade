@@ -3,9 +3,11 @@ html
     title Futbol
 
     script(src='/socket.io/socket.io.js')
+    script(src='/lib/underscore/underscore.js')
     script(src='/lib/angular/angular.js')
+    script(src='/lib/angular-route/angular-route.js')
     script(src='/lib/angular-socket-io/socket.js')
     script(src='/js/application.js')
 
   body(ng-app='Futbol')
-    h1 This is a test {{1+1}}
+    ng-view
