@@ -1,4 +1,4 @@
-# Futbol
+# Gamifyed
 
 Generate `www` folder:
 
