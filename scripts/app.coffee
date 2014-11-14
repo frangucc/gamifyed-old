@@ -33,7 +33,7 @@ Futbol.controller 'LevelsCtrl', ($scope, Levels) ->
   $scope.$watch (-> Levels.list), ->
     $scope.levels = Levels.list
 
-Futbol.controller 'LevelCtrl', ($scope, $sce, $routeParams, Levels) ->
+Futbol.controller 'LevelCtrl', ($scope, $sce, $routeParams, $timeout, Levels) ->
   $scope.index = if $routeParams.step then $routeParams.step-1 else 0
 
   $scope.$watch (-> Levels.list), ->
@@ -42,6 +42,16 @@ Futbol.controller 'LevelCtrl', ($scope, $sce, $routeParams, Levels) ->
       $scope.step = $scope.level.steps[$scope.index]
       $scope.step.url = $sce.trustAsResourceUrl($scope.step.url)
 
+      if $scope.step.type == 'dialog'
+        $scope.messageIndex = 0
+        $scope.messages = []
+        $timeout((-> $scope.nextMessage()), 1000)
+
   $scope.hasMoreSteps = ->
     if $scope.step
       $scope.step.index < $scope.level.steps.length
+
+  $scope.nextMessage = ->
+    $scope.messages.push($scope.step.messages[$scope.messageIndex])
+    $scope.messageIndex++
+    $timeout($scope.nextMessage, 2000) if $scope.messageIndex < $scope.step.messages.length
