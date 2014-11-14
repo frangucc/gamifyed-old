@@ -15,10 +15,9 @@ section.video(ng-if="step.type == 'video'")
     frameborder="0")
 
 section.dialog(ng-if="step.type == 'dialog'")
-  p.waiting(ng-show='messages.length==0') Loading ...
-
   ul
-    li(ng-repeat='message in messages' ng-bind='message')
+    li.message(ng-repeat='message in messages' ng-bind='message')
+    li.typing(ng-show='typing') ...
 
 nav
   a(ng-href="#/levels/{{level.permalink}}/{{step.index-1}}" ng-hide='index == 0') Back

@@ -45,13 +45,17 @@ Futbol.controller 'LevelCtrl', ($scope, $sce, $routeParams, $timeout, Levels) ->
       if $scope.step.type == 'dialog'
         $scope.messageIndex = 0
         $scope.messages = []
-        $timeout((-> $scope.nextMessage()), 1000)
+        $timeout($scope.nextMessage, 1000)
 
   $scope.hasMoreSteps = ->
     if $scope.step
       $scope.step.index < $scope.level.steps.length
 
   $scope.nextMessage = ->
-    $scope.messages.push($scope.step.messages[$scope.messageIndex])
-    $scope.messageIndex++
-    $timeout($scope.nextMessage, 2000) if $scope.messageIndex < $scope.step.messages.length
+    $scope.typing = true
+    $timeout((->
+      $scope.typing = false
+      $scope.messages.push($scope.step.messages[$scope.messageIndex])
+      $scope.messageIndex++
+      $timeout($scope.nextMessage, 3000) if $scope.messageIndex < $scope.step.messages.length
+    ), 2000)
