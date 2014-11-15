@@ -1,5 +1,5 @@
 {
-  "name": "futbol",
+  "name": "gamifyed",
   "main": "index.js",
   "version": "0.0.0",
   "authors": [
@@ -12,5 +12,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.15"
+  }
 }

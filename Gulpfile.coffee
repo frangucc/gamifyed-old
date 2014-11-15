@@ -10,7 +10,7 @@ jade = require("gulp-jade")
 
 paths =
   sass:
-    source: ["styles/**/*.sass"]
+    source: ["sass/**/*.sass"]
     dest: './www/css'
   coffee:
     source: ["scripts/**/*.coffee"]
@@ -37,7 +37,7 @@ gulp.task "coffee", (done) ->
       .pipe(gulp.dest(paths.coffee.dest))
 
 gulp.task "sass", (done) ->
-  gulp.src("./www/sass/application.sass")
+  gulp.src(paths.sass.source)
       .pipe(sass({sourcemap: true, sourcemapPath: paths.sass.dest}))
       .pipe(gulp.dest(paths.sass.dest))
       .pipe(minifyCss(keepSpecialComments: 0))
