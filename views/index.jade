@@ -9,8 +9,8 @@ html
     script(src='/lib/angular-socket-io/socket.js')
     script(src='/js/application.js')
     script(src='/lib/requirejs/require.js', data-main='/lib/requirejs/require_samsung')
-
-    style(src='/css/app.min.css')
+    link(rel='stylesheet', href='/css/app.min.css')
+    
 
   body(ng-app='Futbol')
     ng-view
