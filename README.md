@@ -3,11 +3,11 @@
 Generate `www` folder:
 
 ```
-gulp watch
+cd server && gulp watch
 ```
 
 Run with node:
 
 ```
-node .
+node server
 ```
