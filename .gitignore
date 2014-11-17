@@ -2,4 +2,5 @@
 /client/www/*.html
 /client/www/js
 /client/www/css
+/client/.sass-cache
 .DS_Store
