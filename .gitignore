@@ -1,2 +1,5 @@
 /server/www
+/client/www/*.html
+/client/www/js
+/client/www/css
 .DS_Store
