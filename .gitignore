@@ -1,4 +1,7 @@
-/server/www/**/*.html
+/server/www/*.html
+/server/www/desktop
+/server/www/tablet
+/server/www/mobile
 /server/www/css
 /server/www/js
 /server/.sass-cache
