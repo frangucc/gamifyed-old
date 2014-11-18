@@ -16,6 +16,7 @@
   "dependencies": {
     "requirejs": "~2.1.15",
     "devicejs": "~0.1.16",
-    "angular-ui-router": "~0.2.12"
+    "angular-ui-router": "~0.2.12",
+    "ionic": "~0.9.27"
   }
 }
