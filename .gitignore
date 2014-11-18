@@ -1,7 +1,11 @@
-/server/www
+/server/www/**/*.html
+/server/www/css
+/server/www/js
+/server/.sass-cache
+
 /client/www/*.html
 /client/www/js
 /client/www/css
 /client/.sass-cache
-/server/.sass-cache
+
 .DS_Store
