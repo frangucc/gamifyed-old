@@ -8,9 +8,4 @@
 /server/plugins/
 /server/.sass-cache
 
-/client/www/*.html
-/client/www/js
-/client/www/css
-/client/.sass-cache
-
 .DS_Store
