@@ -1,6 +1,6 @@
-window.Futbol = angular.module('Futbol', ['ngRoute', 'btford.socket-io'])
+window.Gamifyed = angular.module('Gamifyed', ['ngRoute', 'btford.socket-io'])
 
-Futbol.config ($routeProvider) ->
+Gamifyed.config ($routeProvider) ->
   $routeProvider
     .when '/',
       controller: 'LevelsCtrl'
@@ -14,10 +14,10 @@ Futbol.config ($routeProvider) ->
       controller: 'LevelCtrl'
       templateUrl: 'levels/show.html'
 
-Futbol.factory 'Socket', (socketFactory) ->
+Gamifyed.factory 'Socket', (socketFactory) ->
   socketFactory()
 
-Futbol.factory 'Levels', (Socket) ->
+Gamifyed.factory 'Levels', (Socket) ->
   service =
     list: []
     find: (permalink) ->
@@ -29,11 +29,11 @@ Futbol.factory 'Levels', (Socket) ->
 
   service
 
-Futbol.controller 'LevelsCtrl', ($scope, Levels) ->
+Gamifyed.controller 'LevelsCtrl', ($scope, Levels) ->
   $scope.$watch (-> Levels.list), ->
     $scope.levels = Levels.list
 
-Futbol.controller 'LevelCtrl', ($scope, $sce, $routeParams, $timeout, Levels) ->
+Gamifyed.controller 'LevelCtrl', ($scope, $sce, $routeParams, $timeout, Levels) ->
   $scope.index = if $routeParams.step then $routeParams.step-1 else 0
 
   $scope.$watch (-> Levels.list), ->
