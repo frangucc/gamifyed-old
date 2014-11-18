@@ -38,7 +38,7 @@ gulp.task "coffee", (done) ->
 
 gulp.task "sass", (done) ->
   gulp.src(paths.sass.source)
-      .pipe(sass({sourcemap: true, sourcemapPath: paths.sass.dest}))
+      .pipe(sass())
       .pipe(gulp.dest(paths.sass.dest))
       .pipe(minifyCss(keepSpecialComments: 0))
       .pipe(rename(extname: ".min.css"))
@@ -51,3 +51,19 @@ gulp.task "watch", ->
     gulp.start("coffee")
   gulp.watch paths.templates.source, ->
     gulp.start("templates")
+
+gulp.task 'install', ['git-check'], ->
+  bower.commands.install()
+    .on 'log', (data) ->
+      gutil.log('bower', gutil.colors.cyan(data.id), data.message)
+
+gulp.task 'git-check', (done) ->
+  if !sh.which('git')
+    console.log(
+      '  ' + gutil.colors.red('Git is not installed.'),
+      '\n  Git, the version control system, is required to download Ionic.',
+      '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
+      '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
+    )
+    process.exit(1)
+  done()

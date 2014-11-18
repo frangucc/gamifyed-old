@@ -4,6 +4,8 @@
 /server/www/mobile
 /server/www/css
 /server/www/js
+/server/platforms/
+/server/plugins/
 /server/.sass-cache
 
 /client/www/*.html
