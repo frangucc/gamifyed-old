@@ -10,7 +10,7 @@ jade = require("gulp-jade")
 
 paths =
   sass:
-    source: ["sass/**/*.sass"]
+    source: ["styles/**/*.sass"]
     dest: './www/css'
   coffee:
     source: ["scripts/**/*.coffee"]
