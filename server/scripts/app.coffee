@@ -1,4 +1,11 @@
-window.Gamifyed = angular.module('Gamifyed', ['ui.router', 'btford.socket-io'])
+if device.desktop()
+  window.Gamifyed = angular.module('Gamifyed', ['ui.router', 'btford.socket-io'])
+else
+  window.Gamifyed = angular.module("Gamifyed", [ "ionic", "btford.socket-io"])
+    .run ($ionicPlatform) ->
+      $ionicPlatform.ready ->
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true) if window.cordova and window.cordova.plugins.Keyboard
+        StatusBar.styleDefault() if window.StatusBar
 
 Gamifyed.config ($stateProvider, $urlRouterProvider, $httpProvider) ->
   $stateProvider
