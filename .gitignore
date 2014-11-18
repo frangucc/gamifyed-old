@@ -3,4 +3,5 @@
 /client/www/js
 /client/www/css
 /client/.sass-cache
+/server/.sass-cache
 .DS_Store
