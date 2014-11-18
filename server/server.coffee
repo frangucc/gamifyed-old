@@ -9,4 +9,8 @@ server.listen(process.env.PORT || 3000)
 app.use('/', express.static(__dirname + '/www'))
 app.use('/lib', express.static(__dirname + '/bower_components'))
 
+app.get '/config.json', (request, response) ->
+  response.json
+    socketUrl: "http://localhost:3000/socket.io"
+
 io.on('connection', socketHandler)
