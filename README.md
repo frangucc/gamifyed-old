@@ -1,29 +1,30 @@
 # Gamifyed
 
-## Server
+## Generate html, css, js:
 
 Generate `www` folder:
 
 ```
-cd server && gulp watch
+gulp watch
 ```
 
-Run server (default port is 3000):
+## Run server
+
+Default port is 3000:
 
 ```
-node server
+node .
 ```
 
-## Client
+## Generate Android app
 
-Generate `www` folder:
+```bash
+# add platform
+ionic platforms add android
 
-```
-cd client && gulp watch
-```
+# build app
+ionic build
 
-Run dev server (default port is 8100):
-
-```
-cd client && ionic serve
+# run on device
+ionic run --device
 ```
