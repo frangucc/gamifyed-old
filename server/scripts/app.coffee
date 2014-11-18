@@ -1,18 +1,37 @@
-window.Gamifyed = angular.module('Gamifyed', ['ngRoute', 'btford.socket-io'])
+window.Gamifyed = angular.module('Gamifyed', ['ui.router', 'btford.socket-io'])
 
-Gamifyed.config ($routeProvider) ->
-  $routeProvider
-    .when '/',
+Gamifyed.config ($stateProvider, $urlRouterProvider, $httpProvider) ->
+  $stateProvider
+    .state 'levels',
+      url: '/'
       controller: 'LevelsCtrl'
       templateUrl: 'levels/index.html'
 
-    .when '/levels/:permalink',
+    .state 'level',
+      url: '/levels/:permalink'
       controller: 'LevelCtrl'
       templateUrl: 'levels/show.html'
 
-    .when '/levels/:permalink/:step',
+    .state 'step',
+      url: '/levels/:permalink/:step'
       controller: 'LevelCtrl'
       templateUrl: 'levels/show.html'
+
+    $urlRouterProvider.otherwise "/"
+
+    $httpProvider.interceptors.push ->
+       request: (config) ->
+         if config.url.match(/\.html$/)
+           if device.tablet()
+             type = 'tablet'
+           else if device.mobile()
+             type = 'mobile'
+           else
+             type = 'desktop'
+
+           config.url = "/#{type}/#{config.url}"
+
+         config
 
 Gamifyed.factory 'Socket', (socketFactory) ->
   socketFactory()
@@ -33,11 +52,11 @@ Gamifyed.controller 'LevelsCtrl', ($scope, Levels) ->
   $scope.$watch (-> Levels.list), ->
     $scope.levels = Levels.list
 
-Gamifyed.controller 'LevelCtrl', ($scope, $sce, $routeParams, $timeout, Levels) ->
-  $scope.index = if $routeParams.step then $routeParams.step-1 else 0
+Gamifyed.controller 'LevelCtrl', ($scope, $sce, $stateParams, $timeout, Levels) ->
+  $scope.index = if $stateParams.step then $stateParams.step-1 else 0
 
   $scope.$watch (-> Levels.list), ->
-    $scope.level = Levels.find($routeParams.permalink)
+    $scope.level = Levels.find($stateParams.permalink)
     if $scope.level
       $scope.step = $scope.level.steps[$scope.index]
       $scope.step.url = $sce.trustAsResourceUrl($scope.step.url)

@@ -2,14 +2,17 @@ html
   head
     title Gamifyed
 
+    meta(charset='utf-8')
+    meta(name='viewport', content='initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width')
+
+    script(src='/lib/devicejs/lib/device.js')
     script(src='/socket.io/socket.io.js')
     script(src='/lib/underscore/underscore.js')
     script(src='/lib/angular/angular.js')
     script(src='/lib/angular-ui-router/release/angular-ui-router.js')
     script(src='/lib/angular-socket-io/socket.js')
-    script(src='/lib/devicejs/lib/device.js')
     script(src='/js/application.js')
     link(rel='stylesheet', href='/css/app.min.css')
 
   body(ng-app='Gamifyed' animation='slide-left-right-ios7')
-    div(ui-view)
+    ui-view
