@@ -1,4 +1,4 @@
-angular.module("gamifyed.controllers", [])
+angular.module("Gamifyed.Controllers", [])
   .controller "DashCtrl", ($scope) ->
     true
 

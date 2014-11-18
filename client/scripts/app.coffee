@@ -1,10 +1,10 @@
-angular.module("gamifyed", [ "ionic", "gamifyed.controllers", "gamifyed.services"])
+Gamifyed = angular.module("Gamifyed", [ "ionic", "Gamifyed.Controllers", "Gamifyed.Services"])
   .run ($ionicPlatform) ->
     $ionicPlatform.ready ->
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true) if window.cordova and window.cordova.plugins.Keyboard
       StatusBar.styleDefault() if window.StatusBar
 
-  .config ($stateProvider, $urlRouterProvider) ->
+Gamifyed.config ($stateProvider, $urlRouterProvider) ->
   
     $stateProvider
       .state "tab",
