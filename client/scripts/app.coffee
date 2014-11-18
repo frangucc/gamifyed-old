@@ -5,7 +5,7 @@ Gamifyed = angular.module("Gamifyed", [ "ionic", "Gamifyed.Controllers", "Gamify
       StatusBar.styleDefault() if window.StatusBar
 
 Gamifyed.config ($stateProvider, $urlRouterProvider) ->
-  
+
     $stateProvider
       .state "tab",
         url: "/tab"
