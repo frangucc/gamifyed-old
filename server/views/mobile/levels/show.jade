@@ -1,25 +1,26 @@
-h1(ng-bind='level.player.name')
+ion-view(title='{{level.player.name}}')
+  ion-content(has-header="true" padding="true")
+    .list
+      pre.item
+        | {{step | json}}
 
-pre
-  | {{step | json}}
+      section.image.list(ng-if="step.type == 'photo'")
+        .item
+          figure
+            img(ng-src='{{step.url}}')
+            figcaption(ng-bind='step.caption')
 
-section.image(ng-if="step.type == 'photo'")
-  figure
-    img(ng-src='{{step.url}}')
-    figcaption(ng-bind='step.caption')
+      section.video(ng-if="step.type == 'video'")
+        iframe#player.item(type="text/html" width="640" height="390"
+          ng-src="{{step.url}}"
+          allowfullscreen
+          frameborder="0")
 
-section.video(ng-if="step.type == 'video'")
-  iframe#player(type="text/html" width="640" height="390"
-    ng-src="{{step.url}}"
-    allowfullscreen
-    frameborder="0")
+      section.dialog(ng-if="step.type == 'dialog'")
+        .item.message(ng-repeat='message in messages' ng-bind='message')
+        .item.typing(ng-show='typing') ...
 
-section.dialog(ng-if="step.type == 'dialog'")
-  ul
-    li.message(ng-repeat='message in messages' ng-bind='message')
-    li.typing(ng-show='typing') ...
-
-nav
-  a(ng-href="#/levels/{{level.permalink}}/{{step.index-1}}" ng-hide='index == 0') Back
-  | &nbsp;
-  a(ng-href="#/levels/{{level.permalink}}/{{step.index+1}}" ng-show='hasMoreSteps()') Next
+      nav.item
+        a(ng-href="#/levels/{{level.permalink}}/{{step.index-1}}" ng-hide='index == 0') Back
+        | &nbsp;
+        a(ng-href="#/levels/{{level.permalink}}/{{step.index+1}}" ng-show='hasMoreSteps()') Next

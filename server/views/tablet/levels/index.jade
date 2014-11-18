@@ -1,3 +1,5 @@
-ul.list
-  li.item(ng-repeat='level in levels')
-    a(ng-href="#/levels/{{level.permalink}}" ng-bind='level.player.name')
+ion-view(title='Levels')
+  ion-content(has-header="true" padding="true")
+    ul.list
+      li.item(ng-repeat='level in levels')
+        a(ng-href="#/levels/{{level.permalink}}" ng-bind='level.player.name')

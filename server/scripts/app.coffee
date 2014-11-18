@@ -7,10 +7,12 @@ else
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true) if window.cordova and window.cordova.plugins.Keyboard
         StatusBar.styleDefault() if window.StatusBar
 
-Gamifyed.config ($stateProvider, $urlRouterProvider, $httpProvider) ->
+Gamifyed.config ($stateProvider, $urlRouterProvider, $httpProvider, $compileProvider) ->
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|geo|tel|local):/)
+
   $stateProvider
     .state 'levels',
-      url: '/'
+      url: '/levels'
       controller: 'LevelsCtrl'
       templateUrl: 'levels/index.html'
 
